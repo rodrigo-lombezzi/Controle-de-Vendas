@@ -1,11 +1,11 @@
-﻿using ControleDeVenda.Objects.DTOs.Entities;
+﻿using ControleVenda.Objects.DTOs.Entities;
 using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace ControleDeVenda.Authentication
+namespace ControleVenda.Authentication
 {
     public class Token
     {

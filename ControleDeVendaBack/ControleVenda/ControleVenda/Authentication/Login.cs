@@ -1,9 +1,9 @@
-﻿using ControleDeVenda.Services.Utils;
+﻿using ControleVenda.Services.Utils;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ControleDeVenda.Authentication
+namespace ControleVenda.Authentication
 {
     public class Login
     {

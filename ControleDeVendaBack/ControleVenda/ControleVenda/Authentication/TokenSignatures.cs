@@ -1,4 +1,4 @@
-﻿namespace ControleDeVenda.Authentication
+﻿namespace ControleVenda.Authentication
 { 
     public class TokenSignatures
     {
