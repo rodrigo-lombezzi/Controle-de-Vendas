@@ -12,8 +12,12 @@ namespace ControleVenda.Objects.DTOs.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<ClienteDTO, Cliente>();
-
+            CreateMap<ClienteDTO, Cliente>().ReverseMap();
+            CreateMap<ParcelaDTO, Parcela>().ReverseMap();
+            CreateMap<ItemVendaDTO, ItemVenda>().ReverseMap();
+            CreateMap<ProdutoDTO, Produto>().ReverseMap();
+            CreateMap<UsuarioDTO, Usuario>().ReverseMap();
+            CreateMap<VendaDTO, Venda>().ReverseMap();
 
         }
     }
