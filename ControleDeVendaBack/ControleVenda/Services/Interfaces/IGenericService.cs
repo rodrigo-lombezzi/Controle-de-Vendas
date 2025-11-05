@@ -1,4 +1,5 @@
-﻿public interface IGenericService<T, Dto> where T : class where Dto : class
+﻿namespace ControleVenda.Services.Entities;
+public interface IGenericService<T, Dto> where T : class where Dto : class
 {
     Task<IEnumerable<Dto>> GetAll();
     Task<Dto> GetById(int id);

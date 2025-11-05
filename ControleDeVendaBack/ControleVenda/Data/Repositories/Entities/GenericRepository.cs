@@ -1,12 +1,15 @@
-using ControleVenda.WebAPI.Data;
-using ControleVenda.WebAPI.Data.Interfaces;
+using ControleVenda.Data.Interfaces;
+using ControleVenda.Data;
+using LumenSys.WebAPI.Data;
+using LumenSys.WebAPI.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
-namespace ControleVenda.Data.Repositories;
+namespace LumenSys.WebAPI.Data.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
-    private readonly AppDbContext _context;
+    private readonly AppDBContext _context;
     private readonly DbSet<T> _dbSet;
 
     public GenericRepository(AppDbContext context)

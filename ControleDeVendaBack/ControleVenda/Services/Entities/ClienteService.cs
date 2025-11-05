@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
+using ControleVenda.Data.Interfaces;
+using ControleVenda.Objects.DTOs;
+using ControleVenda.Objects.Models;
+using ControleVenda.Services.Interfaces;
 
 namespace ControleVenda.Services.Entities
 {
-    public class ClientService : GenericService<Cliente, ClienteDTO>, IClienteService
+    public class ClientService : GenericService<Cliente, ClienteDTO>, IClienteService 
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IMapper _mapper;
 
-        public ClienteService(
-            IClienteRepository repository,
-            IMapper mapper
-        ) : base(repository, mapper)
+        public ClienteService(IClienteRepository repository, IMapper mapper) : base(repository, mapper)
         {
             _clienteRepository = repository;
             _mapper = mapper;

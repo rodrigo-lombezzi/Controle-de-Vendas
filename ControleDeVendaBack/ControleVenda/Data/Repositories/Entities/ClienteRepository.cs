@@ -1,13 +1,13 @@
-using ControleVenda.WebAPI.Data.Interfaces;
-using ControleVenda.WebAPI.Objects.Models;
+using ControleVenda.Data.Interfaces;
+using ControleVenda.Objects.Models;
 
 namespace ControleVenda.Data.Repositories
 {
 	public class ClienteRepository : GenericRepository<Cliente>, IClienteRepository
 	{
-		private readonly AppDbContext _context;
+		private readonly AppDBContext _context;
 
-		public ClienteRepository(AppDbContext context) : base(context)
+		public ClienteRepository(AppDBContext context) : base(context)
 		{
 			_context = context;
 		}
