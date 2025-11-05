@@ -1,4 +1,5 @@
 ﻿using ControleVenda.Objects.DTOs.Entities;
+using ControleVenda.WebAPI.Objects.Enums;
 using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,8 +13,12 @@ namespace ControleVenda.Authentication
         [Required(ErrorMessage = "O token é requerido")]
         public string AccessToken { get; private set; }
 
-        public string GenerateToken(UserDTO user)
+        public string GenerateToken(UsuarioDTO user)
         {
+
+            if (!user.Ativo)
+                throw new UnauthorizedAccessException("Usuário inativo não pode acessar o sistema.");
+
             var security = new TokenSignatures();
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(security.Key));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -23,9 +28,8 @@ namespace ControleVenda.Authentication
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Iss, security.Issuer),
                 new Claim(JwtRegisteredClaimNames.Aud, security.Audience),
-                new Claim(ClaimTypes.Role, user.TypeEmployee.ToString()),
-                new Claim("UserId", user.Id.ToString()),
-                new Claim("CompanyId", user.CompanyId.ToString())
+                new Claim(ClaimTypes.Role, user.Cargo.ToString()),
+                new Claim("UserId", user.Id.ToString())
             };
 
             var token = new JwtSecurityToken(

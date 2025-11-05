@@ -29,7 +29,6 @@ namespace ControleVenda.Data.Builders
 
             modelBuilder.Entity<Parcela>()
                 .Property(p => p.DataPagamento);
-
             modelBuilder.Entity<Parcela>().HasData(
                 new Parcela
                 {
@@ -37,7 +36,8 @@ namespace ControleVenda.Data.Builders
                     ValorPago = 250.00,
                     ValorTotal = 500.00,
                     DataVencimento = new DateOnly(2025, 11, 15),
-                    DataPagamento = new DateOnly(2025, 11, 10)
+                    DataPagamento = new DateOnly(2025, 11, 10),
+                    VendaId = 1 
                 },
                 new Parcela
                 {
@@ -45,7 +45,8 @@ namespace ControleVenda.Data.Builders
                     ValorPago = 0.00,
                     ValorTotal = 500.00,
                     DataVencimento = new DateOnly(2025, 12, 15),
-                    DataPagamento = default
+                    DataPagamento = null,
+                    VendaId = 1 
                 }
             );
         }

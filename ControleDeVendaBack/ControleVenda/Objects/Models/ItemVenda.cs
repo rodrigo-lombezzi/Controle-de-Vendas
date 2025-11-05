@@ -11,6 +11,11 @@ namespace ControleVenda.Objects.Models
         public int QtdProduto { get; set; }
         [Column("subTotal")]
         public double SubTotal { get; set; }
+        public int ProdutoId { get; set; }
+        public Produto Produto { get; set; }
+
+        public int VendaId { get; set; }
+        public Venda Venda { get; set; }
 
         public ItemVenda() { }
 

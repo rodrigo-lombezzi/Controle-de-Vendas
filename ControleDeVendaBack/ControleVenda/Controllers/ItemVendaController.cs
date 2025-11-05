@@ -1,32 +1,32 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ControleVenda.Authentication;
 using ControleVenda.Services.Interfaces;
 using ControleVenda.Objects.DTOs.Entities;
 
-namespace LumenSys.WebAPI.Controllers
+namespace ControleVenda.WebAPI.Controllers
 {
-    [Authorize(Roles = "ADMINISTRATOR,MANAGER,EMPLOYEE")]
+    [Authorize(Roles = "ADMINISTRADOR,GERENTE,VENDEDOR")]
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class ClientController : ControllerBase
+    public class ItemVendaController : ControllerBase
     {
-        private readonly IClienteService _clienteService;
+        private readonly IItemVendaService _itemVendaService;
         private readonly Response _response;
 
-        public ClientController(IClienteService clientService)
+        public ItemVendaController(IItemVendaService itemVendaService)
         {
-            _clienteService = clientService;
+            _itemVendaService = itemVendaService;
             _response = new Response();
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var clientes = await _clienteService.GetAll();
+            var itens = await _itemVendaService.GetAll();
             _response.Code = ResponseEnum.Success;
-            _response.Message = "Lista de clientes obtida com sucesso!";
-            _response.Data = clientes;
+            _response.Message = "Lista de itens de venda obtida com sucesso!";
+            _response.Data = itens;
             return Ok(_response);
         }
 
@@ -35,10 +35,10 @@ namespace LumenSys.WebAPI.Controllers
         {
             try
             {
-                var cliente = await _clienteService.GetById(id);
+                var item = await _itemVendaService.GetById(id);
                 _response.Code = ResponseEnum.Success;
-                _response.Message = $"Cliente {cliente.Nome} encontrado com sucesso!";
-                _response.Data = cliente;
+                _response.Message = $"Item de venda {item.Id} encontrado com sucesso!";
+                _response.Data = item;
                 return Ok(_response);
             }
             catch (ArgumentNullException ex)
@@ -51,23 +51,23 @@ namespace LumenSys.WebAPI.Controllers
             catch (Exception ex)
             {
                 _response.Code = ResponseEnum.Error;
-                _response.Message = "Erro ao buscar cliente: " + ex.Message;
+                _response.Message = "Erro ao buscar item de venda: " + ex.Message;
                 _response.Data = null;
                 return StatusCode(500, _response);
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(ClienteDTO dto)
+        public async Task<IActionResult> Post(ItemVendaDTO dto)
         {
             try
             {
-                ClienteDTO.Validate(dto);
+                ItemVendaDTO.Validate(dto);
                 dto.Id = 0;
-                await _clienteService.Create(dto);
+                await _itemVendaService.Create(dto);
 
                 _response.Code = ResponseEnum.Success;
-                _response.Message = "Cliente cadastrado com sucesso!";
+                _response.Message = "Item de venda cadastrado com sucesso!";
                 _response.Data = dto;
                 return Ok(_response);
             }
@@ -88,22 +88,22 @@ namespace LumenSys.WebAPI.Controllers
             catch (Exception ex)
             {
                 _response.Code = ResponseEnum.Error;
-                _response.Message = "Erro ao cadastrar cliente: " + ex.Message;
+                _response.Message = "Erro ao cadastrar item de venda: " + ex.Message;
                 _response.Data = dto;
                 return StatusCode(500, _response);
             }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, ClienteDTO dto)
+        public async Task<IActionResult> Put(int id, ItemVendaDTO dto)
         {
             try
             {
-                ClienteDTO.Validate(dto);
-                await _clienteService.Update(dto, id);
+                ItemVendaDTO.Validate(dto);
+                await _itemVendaService.Update(dto, id);
 
                 _response.Code = ResponseEnum.Success;
-                _response.Message = "Cliente atualizado com sucesso!";
+                _response.Message = "Item de venda atualizado com sucesso!";
                 _response.Data = dto;
                 return Ok(_response);
             }
@@ -131,20 +131,21 @@ namespace LumenSys.WebAPI.Controllers
             catch (Exception ex)
             {
                 _response.Code = ResponseEnum.Error;
-                _response.Message = "Erro ao atualizar cliente: " + ex.Message;
+                _response.Message = "Erro ao atualizar item de venda: " + ex.Message;
                 _response.Data = dto;
                 return StatusCode(500, _response);
             }
         }
+
         [Authorize(Roles = "ADMINISTRADOR")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                await _clienteService.Delete(id);
+                await _itemVendaService.Delete(id);
                 _response.Code = ResponseEnum.Success;
-                _response.Message = "Cliente removido com sucesso!";
+                _response.Message = "Item de venda removido com sucesso!";
                 _response.Data = null;
                 return Ok(_response);
             }
@@ -158,7 +159,7 @@ namespace LumenSys.WebAPI.Controllers
             catch (Exception ex)
             {
                 _response.Code = ResponseEnum.Error;
-                _response.Message = "Erro ao remover cliente: " + ex.Message;
+                _response.Message = "Erro ao remover item de venda: " + ex.Message;
                 _response.Data = null;
                 return StatusCode(500, _response);
             }

@@ -17,6 +17,7 @@ namespace ControleVenda.Objects.Models
         public string Telefone { get; set; }
         [Column("endereco")]
         public string Endereco { get; set; }
+        public ICollection<Venda> Vendas { get; set; }
 
         public Cliente () { }
 

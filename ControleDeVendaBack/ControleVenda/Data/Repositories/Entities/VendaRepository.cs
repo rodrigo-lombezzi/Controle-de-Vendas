@@ -4,7 +4,7 @@ using LumenSys.WebAPI.Data.Repositories;
 
 namespace ControleVenda.Data.Repositories
 {
-    public class Vendaepository : GenericRepository<Venda>, IVendaRepository
+    public class VendaRepository : GenericRepository<Venda>, IVendaRepository
     {
         private readonly AppDBContext _context;
 

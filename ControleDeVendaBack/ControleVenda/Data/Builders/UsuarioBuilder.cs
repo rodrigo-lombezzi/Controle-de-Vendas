@@ -23,6 +23,10 @@ namespace ControleVenda.Data.Builders
                 .Property(u => u.Senha)
                 .IsRequired()
                 .HasMaxLength(255);
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Email)
+                .IsRequired()
+                .HasMaxLength(11);
 
             modelBuilder.Entity<Usuario>()
                 .Property(u => u.Email)
@@ -38,16 +42,18 @@ namespace ControleVenda.Data.Builders
                 {
                     Id = 1,
                     Nome = "teste",
-                    Senha = "123", 
+                    Senha = "12345678", 
                     Email = "teste@gmail.com",
+                    Telefone = "17998988898",
                     Ativo = true
                 },
                 new Usuario
                 {
                     Id = 2,
                     Nome = "venda",
-                    Senha = "123",
+                    Senha = "12345678",
                     Email = "venda@gmail.com",
+                    Telefone = "11998988878",
                     Ativo = true
                 }
             );

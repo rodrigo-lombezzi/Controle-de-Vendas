@@ -17,6 +17,8 @@ namespace ControleVenda.Objects.Models
         public int Quantidade { get; set; }
         [Column("ativo")]
         public bool Ativo { get; set; }
+        public ICollection<ItemVenda> ItensVenda { get; set; }
+
         public Produto() { }
 
         public Produto(int id, string nome, string descricao, double valorUnitario, int quantidade, bool ativo)

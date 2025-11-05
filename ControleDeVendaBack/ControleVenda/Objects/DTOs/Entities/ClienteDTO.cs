@@ -1,6 +1,6 @@
 ﻿using ControleVenda.Services.Utils;
 
-namespace ControleVenda.Objects.DTOs
+namespace ControleVenda.Objects.DTOs.Entities
 {
     public class ClienteDTO
     {

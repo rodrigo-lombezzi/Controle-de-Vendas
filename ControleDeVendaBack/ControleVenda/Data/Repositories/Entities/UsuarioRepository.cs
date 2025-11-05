@@ -17,7 +17,7 @@ namespace ControleVenda.Data.Repositories
 
         public async Task<Usuario> Login(Login login)
         {
-            return await _context.Usuarios.AsNoTracking().FirstOrDefaultAsync(u => u.Email == login.Email && u.Senha == login.Senha);
+            return await _context.Usuarios.AsNoTracking().FirstOrDefaultAsync(u => u.Email == login.Email && u.Senha == login.Password);
         }
         public async Task<Usuario> GetByEmail(string email)
         {

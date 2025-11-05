@@ -1,5 +1,5 @@
 using AutoMapper;
-using ControleVenda.Objects.DTOs;
+using ControleVenda.Objects.DTOs.Entities;
 using ControleVenda.Objects.Models;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace ControleVenda.Objects.DTOs.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<ClienteDTO, Cliente>().ReverseMap();
+            CreateMap<ClienteDTO, Cliente>();
             CreateMap<ParcelaDTO, Parcela>().ReverseMap();
             CreateMap<ItemVendaDTO, ItemVenda>().ReverseMap();
             CreateMap<ProdutoDTO, Produto>().ReverseMap();

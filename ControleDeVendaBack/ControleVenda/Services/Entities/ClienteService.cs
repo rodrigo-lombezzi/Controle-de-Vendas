@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ControleVenda.Data.Interfaces;
-using ControleVenda.Objects.DTOs;
+using ControleVenda.Objects.DTOs.Entities;
 using ControleVenda.Objects.Models;
 using ControleVenda.Services.Interfaces;
 using ControleVenda.Services.Utils;

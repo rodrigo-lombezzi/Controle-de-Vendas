@@ -28,13 +28,13 @@ namespace ControleVenda.Data.Builders
                 {
                     Id = 1,
                     ValorTotal = 1299.90,
-                    DataHora = new DateTime(2025, 11, 1, 15, 30, 0)
+                    DataHora = DateTime.SpecifyKind(new DateTime(2025, 11, 1, 15, 30, 0), DateTimeKind.Utc)
                 },
                 new Venda
                 {
                     Id = 2,
                     ValorTotal = 259.50,
-                    DataHora = new DateTime(2025, 11, 2, 10, 45, 0)
+                    DataHora = DateTime.SpecifyKind(new DateTime(2025, 11, 2, 10, 45, 0), DateTimeKind.Utc)
                 }
             );
         }

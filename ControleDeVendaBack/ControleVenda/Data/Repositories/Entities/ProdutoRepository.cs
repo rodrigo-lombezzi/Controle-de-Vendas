@@ -1,9 +1,10 @@
 using ControleVenda.Data.Interfaces;
 using ControleVenda.Objects.Models;
+using LumenSys.WebAPI.Data.Repositories;
 
 namespace ControleVenda.Data.Repositories
 {
-    public class ProdutoRepository : IGenericRepository<Produto>, IProdutoRepository
+    public class ProdutoRepository : GenericRepository<Produto>, IProdutoRepository
     {
         private readonly AppDBContext _context;
 
