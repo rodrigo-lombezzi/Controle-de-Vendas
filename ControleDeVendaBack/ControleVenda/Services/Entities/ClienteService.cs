@@ -3,10 +3,11 @@ using ControleVenda.Data.Interfaces;
 using ControleVenda.Objects.DTOs;
 using ControleVenda.Objects.Models;
 using ControleVenda.Services.Interfaces;
+using ControleVenda.Services.Utils;
 
 namespace ControleVenda.Services.Entities
 {
-    public class ClientService : GenericService<Cliente, ClienteDTO>, IClienteService 
+    public class ClienteService : GenericService<Cliente, ClienteDTO>, IClienteService 
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IMapper _mapper;
@@ -72,9 +73,9 @@ namespace ControleVenda.Services.Entities
             await base.Delete(id);
         }
 
-        private async Task<bool> CheckDuplicate(Func<Client, string?> selector, string? valor, int idIgnorar)
+        private async Task<bool> CheckDuplicate(Func<Cliente, string?> selector, string? valor, int idIgnorar)
         {
-            var clientes = await _clientRepository.Get();
+            var clientes = await _clienteRepository.Get();
             return clientes.Any(c =>
                 c.Id != idIgnorar &&
                 !string.IsNullOrWhiteSpace(selector(c)) &&

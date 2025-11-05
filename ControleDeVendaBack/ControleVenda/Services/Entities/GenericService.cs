@@ -27,30 +27,30 @@ public class GenericService<T, Dto> : IGenericService<T, Dto> where T : class wh
         this.mapper = mapper;   
     }
     */
-    public async Task<IEnumerable<Dto>> GetAll()
+    public virtual async Task<IEnumerable<Dto>> GetAll()
     {
         var entities = await _repository.Get();
         return _mapper.Map<IEnumerable<Dto>>(entities);
     }
-    public async Task<Dto> GetById(int id)
+    public virtual async Task<Dto> GetById(int id)
     {
         var entity = await _repository.GetById(id);
         return _mapper.Map<Dto>(entity);
     }
-    public async Task Create(Dto dto)
+    public virtual async Task Create(Dto dto)
     {
         var entity = _mapper.Map<T>(dto);
         await _repository.Add(entity);
     }
 
-    public async Task Update(Dto dto, int id)
+    public virtual async Task Update(Dto dto, int id)
     {
         var existing = await _repository.GetById(id);
         var entity = _mapper.Map<T>(dto);
         await _repository.Update(entity);
     }
 
-    public async Task Delete(int id)
+    public virtual async Task Delete(int id)
     {
         var entity = await _repository.GetById(id);
         await _repository.Remove(entity);

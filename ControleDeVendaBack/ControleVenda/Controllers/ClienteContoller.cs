@@ -1,9 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using LumenSys.WebAPI.Objects.DTOs.Entities;
-using LumenSys.WebAPI.Services.Interfaces;
-using LumenSys.WebAPI.Objects.Contract;
-using LumenSys.Objects.Enums;
 using ControleVenda.Authentication;
 using ControleVenda.Objects.DTOs;
 using ControleVenda.Services.Interfaces;
@@ -41,7 +37,7 @@ namespace LumenSys.WebAPI.Controllers
             {
                 var cliente = await _clienteService.GetById(id);
                 _response.Code = ResponseEnum.Success;
-                _response.Message = $"Cliente {cliente.Name} encontrado com sucesso!";
+                _response.Message = $"Cliente {cliente.Nome} encontrado com sucesso!";
                 _response.Data = cliente;
                 return Ok(_response);
             }

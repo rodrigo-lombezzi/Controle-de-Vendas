@@ -1,5 +1,6 @@
 using ControleVenda.Data.Interfaces;
 using ControleVenda.Objects.Models;
+using LumenSys.WebAPI.Data.Repositories;
 
 namespace ControleVenda.Data.Repositories
 {

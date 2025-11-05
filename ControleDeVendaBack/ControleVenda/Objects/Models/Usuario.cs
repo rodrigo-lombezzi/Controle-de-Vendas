@@ -12,7 +12,7 @@ namespace ControleVenda.Objects.Models
         [Column("senha")]
         public string Senha { get; set; }
         [Column("email")]
-        public string Email { get; set; }}
+        public string Email { get; set; }
         [Column("ativo")]
         public bool Ativo { get; set; }
 
