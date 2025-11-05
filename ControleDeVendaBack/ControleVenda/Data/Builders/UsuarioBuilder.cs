@@ -1,47 +1,44 @@
 ﻿using ControleVenda.Objects.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleVenda.Data.Builders
 {
-    public class UsuarioBuilder : IEntityTypeConfiguration<Usuario>
+    public class UsuarioBuilder
     {
-        public void Configure(EntityTypeBuilder<Usuario> builder)
+        public static void Build(ModelBuilder modelBuilder)
         {
-            builder.ToTable("usuario");
 
-            builder.HasKey(u => u.Id);
+            modelBuilder.Entity<Usuario>().HasKey(u => u.Id);
 
-            builder.Property(u => u.Id)
-                   .HasColumnName("id")
-                   .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Id)
+                .ValueGeneratedOnAdd();
 
-            builder.Property(u => u.Nome)
-                   .HasColumnName("nome")
-                   .IsRequired()
-                   .HasMaxLength(100);
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Nome)
+                .IsRequired()
+                .HasMaxLength(100);
 
-            builder.Property(u => u.Senha)
-                   .HasColumnName("senha")
-                   .IsRequired()
-                   .HasMaxLength(255);
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Senha)
+                .IsRequired()
+                .HasMaxLength(255);
 
-            builder.Property(u => u.Email)
-                   .HasColumnName("email")
-                   .IsRequired()
-                   .HasMaxLength(150);
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Email)
+                .IsRequired()
+                .HasMaxLength(150);
 
-            builder.Property(u => u.Ativo)
-                   .HasColumnName("ativo")
-                   .IsRequired();
+            modelBuilder.Entity<Usuario>()
+                .Property(u => u.Ativo)
+                .IsRequired();
 
-            // (Opcional) Seed Data
-            builder.HasData(
+            modelBuilder.Entity<Usuario>().HasData(
                 new Usuario
                 {
                     Id = 1,
                     Nome = "teste",
-                    Senha = "123", // ⚠️ Idealmente armazenar hash, não texto puro
+                    Senha = "123", 
                     Email = "teste@gmail.com",
                     Ativo = true
                 },

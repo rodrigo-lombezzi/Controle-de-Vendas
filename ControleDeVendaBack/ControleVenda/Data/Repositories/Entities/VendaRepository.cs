@@ -1,13 +1,14 @@
-using ControleVenda.WebAPI.Data.Interfaces;
-using ControleVenda.WebAPI.Objects.Models;
+using ControleVenda.Data.Interfaces;
+using ControleVenda.Objects.Models;
+using LumenSys.WebAPI.Data.Repositories;
 
 namespace ControleVenda.Data.Repositories
 {
     public class Vendaepository : GenericRepository<Venda>, IVendaRepository
     {
-        private readonly AppDbContext _context;
+        private readonly AppDBContext _context;
 
-        public VendaRepository(AppDbContext context) : base(context)
+        public VendaRepository(AppDBContext context) : base(context)
         {
             _context = context;
         }

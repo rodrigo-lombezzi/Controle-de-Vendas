@@ -1,32 +1,24 @@
 using ControleVenda.Objects.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleVenda.Data.Builders
 {
-    public class ItemVendaBuilder : IEntityTypeConfiguration<ItemVenda>
+    public class ItemVendaBuilder
     {
-        public void Configure(EntityTypeBuilder<ItemVenda> builder)
+        public static void Build(ModelBuilder modelBuilder)
         {
-            builder.ToTable("itemVenda");
+            modelBuilder.Entity<ItemVenda>().HasKey(iv => iv.Id);
 
-            builder.HasKey(iv => iv.Id);
+            modelBuilder.Entity<ItemVenda>()
+                .Property(iv => iv.QtdProduto)
+                .IsRequired();
 
-            builder.Property(iv => iv.Id)
-                   .HasColumnName("id")
-                   .ValueGeneratedOnAdd();
+            modelBuilder.Entity<ItemVenda>()
+                .Property(iv => iv.SubTotal)
+                .IsRequired()
+                .HasPrecision(18, 2); 
 
-            builder.Property(iv => iv.QtdProduto)
-                   .HasColumnName("qtdProduto")
-                   .IsRequired();
-
-            builder.Property(iv => iv.SubTotal)
-                   .HasColumnName("subTotal")
-                   .IsRequired()
-                   .HasPrecision(18, 2); // Para precisão em valores monetários
-
-            // Dados iniciais (Seed)
-            builder.HasData(
+            modelBuilder.Entity<ItemVenda>().HasData(
                 new ItemVenda
                 {
                     Id = 1,

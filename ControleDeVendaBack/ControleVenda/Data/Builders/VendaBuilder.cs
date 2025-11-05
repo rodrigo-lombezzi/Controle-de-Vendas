@@ -1,32 +1,29 @@
 using ControleVenda.Objects.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleVenda.Data.Builders
 {
-    public class VendaBuilder : IEntityTypeConfiguration<Venda>
+    public class VendaBuilder
     {
-        public void Configure(EntityTypeBuilder<Venda> builder)
+        public static void Build(ModelBuilder modelBuilder)
         {
-            builder.ToTable("venda");
 
-            builder.HasKey(v => v.Id);
+            modelBuilder.Entity<Venda>().HasKey(v => v.Id);
 
-            builder.Property(v => v.Id)
-                   .HasColumnName("id")
-                   .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Venda>()
+                .Property(v => v.Id)
+                .ValueGeneratedOnAdd();
 
-            builder.Property(v => v.ValorTotal)
-                   .HasColumnName("valorTotal")
-                   .HasPrecision(18, 2)
-                   .IsRequired();
+            modelBuilder.Entity<Venda>()
+                .Property(v => v.ValorTotal)
+                .HasPrecision(18, 2)
+                .IsRequired();
 
-            builder.Property(v => v.DataHora)
-                   .HasColumnName("dataHora")
-                   .IsRequired();
+            modelBuilder.Entity<Venda>()
+                .Property(v => v.DataHora)
+                .IsRequired();
 
-            // Seed data (opcional)
-            builder.HasData(
+            modelBuilder.Entity<Venda>().HasData(
                 new Venda
                 {
                     Id = 1,

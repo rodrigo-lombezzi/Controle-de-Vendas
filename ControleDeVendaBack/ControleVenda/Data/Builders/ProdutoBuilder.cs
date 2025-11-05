@@ -1,45 +1,42 @@
 using ControleVenda.Objects.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleVenda.Data.Builders
 {
-    public class ProdutoBuilder : IEntityTypeConfiguration<Produto>
+    public class ProdutoBuilder
     {
-        public void Configure(EntityTypeBuilder<Produto> builder)
+        public static void Build(ModelBuilder modelBuilder)
         {
-            builder.ToTable("produto");
 
-            builder.HasKey(p => p.Id);
+            modelBuilder.Entity<Produto>().HasKey(p => p.Id);
 
-            builder.Property(p => p.Id)
-                   .HasColumnName("id")
-                   .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
 
-            builder.Property(p => p.Nome)
-                   .HasColumnName("nome")
-                   .IsRequired()
-                   .HasMaxLength(100);
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.Nome)
+                .IsRequired()
+                .HasMaxLength(100);
 
-            builder.Property(p => p.Descricao)
-                   .HasColumnName("descricao")
-                   .HasMaxLength(255);
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.Descricao)
+                .HasMaxLength(255);
 
-            builder.Property(p => p.ValorUnitario)
-                   .HasColumnName("valorUnitario")
-                   .HasPrecision(18, 2)
-                   .IsRequired();
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.ValorUnitario)
+                .HasPrecision(18, 2)
+                .IsRequired();
 
-            builder.Property(p => p.Quantidade)
-                   .HasColumnName("quantidade")
-                   .IsRequired();
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.Quantidade)
+                .IsRequired();
 
-            builder.Property(p => p.Ativo)
-                   .HasColumnName("ativo")
-                   .IsRequired();
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.Ativo)
+                .IsRequired();
 
-            // (Opcional) Dados iniciais (Seed)
-            builder.HasData(
+            modelBuilder.Entity<Produto>().HasData(
                 new Produto
                 {
                     Id = 1,

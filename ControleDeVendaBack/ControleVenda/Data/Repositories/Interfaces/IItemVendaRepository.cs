@@ -1,5 +1,4 @@
-using ControleVenda.WebAPI.Data.Interfaces;
-using ControleVenda.WebAPI.Objects.Models;
+using ControleVenda.Objects.Models;
 
 namespace ControleVenda.Data.Interfaces
 {

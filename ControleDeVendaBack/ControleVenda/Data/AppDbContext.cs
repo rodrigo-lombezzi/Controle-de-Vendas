@@ -1,5 +1,5 @@
 using ControleVenda.Data.Builders;
-using ControleVenda.Objetcs.Models;
+using ControleVenda.Objects.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ControleVenda.Data

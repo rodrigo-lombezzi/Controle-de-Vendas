@@ -1,45 +1,42 @@
 using ControleVenda.Objects.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleVenda.Data.Builders
 {
-    public class ClienteBuilder : IEntityTypeConfiguration<Cliente>
+    public class ClienteBuilder
     {
-        public void Configure(EntityTypeBuilder<Cliente> builder)
+        public static void Build(ModelBuilder modelBuilder)
         {
-            builder.ToTable("cliente");
+         
+            modelBuilder.Entity<Cliente>().HasKey(c => c.Id);
 
-            builder.HasKey(c => c.Id);
+            modelBuilder.Entity<Cliente>()
+                .Property(c => c.Id);
 
-            builder.Property(c => c.Id)
-                   .HasColumnName("id")
-                   .ValueGeneratedOnAdd();
 
-            builder.Property(c => c.Nome)
-                   .HasColumnName("nome")
-                   .IsRequired()
-                   .HasMaxLength(100);
+            modelBuilder.Entity<Cliente>()
+                .Property(c => c.Nome)
+                .IsRequired()
+                .HasMaxLength(100);
 
-            builder.Property(c => c.Cpf)
-                   .HasColumnName("cpf")
-                   .IsRequired()
-                   .HasMaxLength(11);
+            modelBuilder.Entity<Cliente>()
+                .Property(c => c.Cpf)
+                .IsRequired()
+                .HasMaxLength(11);
 
-            builder.Property(c => c.Email)
-                   .HasColumnName("email")
-                   .HasMaxLength(100);
+            modelBuilder.Entity<Cliente>()
+                .Property(c => c.Email)
+                .HasMaxLength(100);
 
-            builder.Property(c => c.Telefone)
-                   .HasColumnName("telefone")
-                   .HasMaxLength(15);
+            modelBuilder.Entity<Cliente>()
+                .Property(c => c.Telefone)
+                .HasMaxLength(15);
 
-            builder.Property(c => c.Endereco)
-                   .HasColumnName("endereco")
-                   .HasMaxLength(150);
+            modelBuilder.Entity<Cliente>()
+                .Property(c => c.Endereco)
+                .HasMaxLength(150);
 
-            // Dados iniciais 
-            builder.HasData(
+            modelBuilder.Entity<Cliente>().HasData(
                 new Cliente
                 {
                     Id = 1,

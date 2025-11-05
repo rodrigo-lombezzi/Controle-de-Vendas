@@ -1,40 +1,36 @@
 using ControleVenda.Objects.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleVenda.Data.Builders
 {
-    public class ParcelaBuilder : IEntityTypeConfiguration<Parcela>
+    public class ParcelaBuilder
     {
-        public void Configure(EntityTypeBuilder<Parcela> builder)
+        public static void Build(ModelBuilder modelBuilder)
         {
-            builder.ToTable("parcela");
+            modelBuilder.Entity<Parcela>().HasKey(p => p.Id);
 
-            builder.HasKey(p => p.Id);
+            modelBuilder.Entity<Parcela>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
 
-            builder.Property(p => p.Id)
-                   .HasColumnName("id")
-                   .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Parcela>()
+                .Property(p => p.ValorPago)
+                .HasPrecision(18, 2)
+                .IsRequired();
 
-            builder.Property(p => p.ValorPago)
-                   .HasColumnName("valorPago")
-                   .HasPrecision(18, 2)
-                   .IsRequired();
+            modelBuilder.Entity<Parcela>()
+                .Property(p => p.ValorTotal)
+                .HasPrecision(18, 2)
+                .IsRequired();
 
-            builder.Property(p => p.ValorTotal)
-                   .HasColumnName("valorTotal")
-                   .HasPrecision(18, 2)
-                   .IsRequired();
+            modelBuilder.Entity<Parcela>()
+                .Property(p => p.DataVencimento)
+                .IsRequired();
 
-            builder.Property(p => p.DataVencimento)
-                   .HasColumnName("dataVencimento")
-                   .IsRequired();
+            modelBuilder.Entity<Parcela>()
+                .Property(p => p.DataPagamento);
 
-            builder.Property(p => p.DataPagamento)
-                   .HasColumnName("dataPagamento");
-
-            // (Opcional) Dados iniciais — Seed
-            builder.HasData(
+            modelBuilder.Entity<Parcela>().HasData(
                 new Parcela
                 {
                     Id = 1,
