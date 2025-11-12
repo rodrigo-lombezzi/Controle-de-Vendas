@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
@@ -7,14 +6,15 @@ import CadastroCliente from './pages/CadastroCliente'
 import CadastroProduto from './pages/CadastroProduto'
 import Login from './pages/Login'
 
-type Page = 'home' | 'clientes' | 'produtos' | 'login'
+export type Page = 'home' | 'clientes' | 'produtos' | 'login'
 
 function App() {
 	const [page, setPage] = useState<Page>('home')
 
 	return (
 		<div className="app-root">
-			<Navbar onNavigate={(p) => setPage(p)} current={page} />
+			{/* you can pass setPage directly now */}
+			<Navbar onNavigate={setPage} current={page} />
 			<main style={{ padding: 16 }}>
 				{page === 'home' && <Home onNavigate={(p) => setPage(p)} />}
 				{page === 'clientes' && <CadastroCliente />}

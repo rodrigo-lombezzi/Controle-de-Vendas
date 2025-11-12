@@ -1,0 +1,49 @@
+/* Professional styles for app */
+:root{
+  --primary:#2563eb;
+  --muted:#6b7280;
+  --bg:#f6f8fa;
+  --card:#ffffff;
+}
+
+body{ margin:0 }
+
+.app-root{
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #222;
+  min-height:100vh;
+  background:var(--bg);
+}
+
+main{ max-width:980px; margin:24px auto; padding:20px }
+
+.card{ background:var(--card); padding:20px; border-radius:10px; box-shadow:0 8px 24px rgba(16,24,40,0.06) }
+.title{ margin:0 0 8px 0; font-size:1.4rem }
+
+button{ background:var(--primary); color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer }
+button.secondary{ background:#e6eefc; color:#1f2937 }
+
+input{ padding:8px 10px; border:1px solid #e5e7eb; border-radius:6px; width:100%; box-sizing:border-box }
+label{ display:block; font-size:0.95rem; color: #374151 }
+form>div{ margin-top:8px }
+
+.navbar{ display:flex; gap:12px; align-items:center; padding:12px 20px; background:var(--card); border-bottom:1px solid #eef2f7 }
+.nav-left{ display:flex; gap:12px; align-items:center }
+.brand{ font-weight:700; font-size:1.05rem }
+.spacer{ margin-left:auto; display:flex; gap:8px }
+
+.icon{ width:18px; height:18px; vertical-align:middle; margin-right:8px; display:inline-block }
+
+nav button{ background:transparent; color:var(--muted); padding:8px 10px; border-radius:8px }
+nav button:hover{ background:rgba(37,99,235,0.08); color:var(--primary) }
+nav button.secondary{ background:transparent; color:var(--muted) }
+
+.spacer button.secondary{ background:#f4f7ff; color:var(--primary); padding:8px 10px }
+
+/* Input with icon */
+.input-with-icon{ display:flex; align-items:center; gap:8px; padding:6px 8px; border-radius:8px; border:1px solid #e5e7eb; background: #fff }
+.input-with-icon .icon-input{ color:var(--muted); width:18px; height:18px }
+.input-with-icon input{ border:none; outline:none; padding:6px 4px; background:transparent; flex:1 }
+
+.form-row{ display:flex; gap:12px; }
+.form-row > label{ flex:1 }

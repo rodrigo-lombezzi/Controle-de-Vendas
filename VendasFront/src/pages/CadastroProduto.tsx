@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FiTag, FiDollarSign } from 'react-icons/fi'
 
 export default function CadastroProduto() {
   const [nome, setNome] = useState('')
@@ -12,16 +13,22 @@ export default function CadastroProduto() {
   }
 
   return (
-    <div>
-      <h2>Cadastro de Produto</h2>
+    <div className="card">
+      <h2 className="title">Cadastro de Produto</h2>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 420 }}>
         <label>
           Nome
-          <input value={nome} onChange={(e) => setNome(e.target.value)} />
+          <div className="input-with-icon">
+            <FiTag className="icon-input" />
+            <input value={nome} onChange={(e) => setNome(e.target.value)} />
+          </div>
         </label>
         <label>
           Preço
-          <input value={preco} onChange={(e) => setPreco(e.target.value)} />
+          <div className="input-with-icon">
+            <FiDollarSign className="icon-input" />
+            <input value={preco} onChange={(e) => setPreco(e.target.value)} />
+          </div>
         </label>
         <div>
           <button type="submit">Salvar</button>

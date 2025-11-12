@@ -1,20 +1,32 @@
-type Page = 'home' | 'clientes' | 'produtos' | 'login'
+import React from 'react';
+import { FiHome, FiUser, FiBox } from 'react-icons/fi';
+import type { IconType } from 'react-icons';
+import type { Page } from '../App';
 
-interface Props {
-  onNavigate: (p: Page) => void
-  current: Page
+interface NavbarProps {
+  onNavigate: React.Dispatch<React.SetStateAction<Page>>;
+  current?: Page;
 }
 
-export default function Navbar({ onNavigate, current }: Props) {
+const items: { Icon: IconType; label: Page }[] = [
+  { Icon: FiHome, label: 'home' },
+  { Icon: FiUser, label: 'clientes' },
+  { Icon: FiBox, label: 'produtos' },
+];
+
+export default function Navbar({ onNavigate, current }: NavbarProps) {
   return (
-    <nav style={{ display: 'flex', gap: 8, padding: 12, alignItems: 'center', borderBottom: '1px solid #ddd' }}>
-      <button onClick={() => onNavigate('home')} aria-current={current === 'home'}>Home</button>
-      <button onClick={() => onNavigate('clientes')} aria-current={current === 'clientes'}>Cadastro Cliente</button>
-      <button onClick={() => onNavigate('produtos')} aria-current={current === 'produtos'}>Cadastro Produto</button>
-      <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
-        <button onClick={() => onNavigate('login')}>Login</button>
-        <button onClick={() => alert('Registrar - função não implementada')}>Registrar</button>
-      </div>
+    <nav>
+      {items.map(({ Icon, label }) => (
+        <div
+          key={label}
+          onClick={() => onNavigate(label)}
+          style={{ cursor: 'pointer', fontWeight: current === label ? 'bold' : 'normal' }}
+        >
+          <Icon />
+          <span>{label}</span>
+        </div>
+      ))}
     </nav>
-  )
+  );
 }
