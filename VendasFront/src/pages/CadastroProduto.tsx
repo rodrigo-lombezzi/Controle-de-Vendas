@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
-import { supabase, Product } from '../lib/supabase';
+import { supabase, type Product } from '../lib/supabase';
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -66,7 +66,7 @@ export default function Products() {
       name: product.name,
       description: product.description || '',
       price: product.price.toString(),
-      stock: product.stock.toString(),
+      stock: (product.stock ?? 0).toString(),
     });
     setEditingId(product.id);
     setShowForm(true);

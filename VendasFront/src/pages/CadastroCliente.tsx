@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
-import { supabase, Customer } from '../lib/supabase';
+import { supabase, type Customer } from '../lib/supabase';
 
 export default function Customers() {
   const [customers, setCustomers] = useState<Customer[]>([]);

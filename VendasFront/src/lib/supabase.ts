@@ -1,24 +1,26 @@
+// Supabase client stub for development.
+// If you add @supabase/supabase-js, replace this stub with a real client.
+export const supabase: any = {};
+export default supabase;
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const env = (import.meta as any).env ?? (globalThis as any).process?.env ?? {};
 
-const SUPABASE_URL = env.VITE_SUPABASE_URL ?? env.REACT_APP_SUPABASE_URL ?? env.SUPABASE_URL;
+const SUPABASE_URL =
+  env.VITE_SUPABASE_URL ?? env.REACT_APP_SUPABASE_URL ?? env.SUPABASE_URL;
 const SUPABASE_ANON_KEY =
   env.VITE_SUPABASE_ANON_KEY ?? env.REACT_APP_SUPABASE_ANON_KEY ?? env.SUPABASE_ANON_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  // remove the throw in production if you prefer runtime fallback
   throw new Error(
-    'Missing Supabase env vars. Set VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY (or REACT_APP_*/SUPABASE_*)'
+    'Missing Supabase env vars. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY (or REACT_APP_*)'
   );
 }
 
 export const supabase: SupabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-/**
- * Adjust the fields below to match your DB schema.
- */
 export type Customer = {
+  address: string;
   id: string;
   name: string;
   email?: string | null;
@@ -27,10 +29,11 @@ export type Customer = {
 };
 
 export type Product = {
+  description: string;
   id: string;
   name: string;
   price: number;
-  stock?: number;
+  stock?: number | null;
   created_at?: string | null;
 };
 
