@@ -1,28 +1,56 @@
-import { useState } from 'react'
-import './App.css'
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import CadastroCliente from './pages/CadastroCliente'
-import CadastroProduto from './pages/CadastroProduto'
-import Login from './pages/Login'
+import { useState } from 'react';
+import { AuthProvider, useAuth } from './lib/auth';
+import Layout from './components/Navbar';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Customers from './pages/CadastroCliente';
+import Products from './pages/CadastroProduto';
+import Sales from './pages/Sales';
 
-export type Page = 'home' | 'clientes' | 'produtos' | 'login'
+function AppContent() {
+  const { user, loading } = useAuth();
+  const [currentPage, setCurrentPage] = useState('home');
 
-function App() {
-	const [page, setPage] = useState<Page>('home')
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
 
-	return (
-		<div className="app-root">
-			{/* you can pass setPage directly now */}
-			<Navbar onNavigate={setPage} current={page} />
-			<main style={{ padding: 16 }}>
-				{page === 'home' && <Home onNavigate={(p) => setPage(p)} />}
-				{page === 'clientes' && <CadastroCliente />}
-				{page === 'produtos' && <CadastroProduto />}
-				{page === 'login' && <Login onLoggedIn={() => setPage('home')} />}
-			</main>
-		</div>
-	)
+  if (!user) {
+    return <Login />;
+  }
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return <Home />;
+      case 'customers':
+        return <Customers />;
+      case 'products':
+        return <Products />;
+      case 'sales':
+        return <Sales />;
+      default:
+        return <Home />;
+    }
+  };
+
+  return (
+    <Layout currentPage={currentPage} onNavigate={setCurrentPage}>
+      {renderPage()}
+    </Layout>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}
+
+export default App;

@@ -1,11 +1,12 @@
 import React from 'react';
-import { FiHome, FiUser, FiBox } from 'react-icons/fi';
 import type { IconType } from 'react-icons';
-import type { Page } from '../App';
+import { FiHome, FiUser, FiBox } from 'react-icons/fi';
+import type { Page } from '../types/pages'; // import your shared Page type
 
 interface NavbarProps {
   onNavigate: React.Dispatch<React.SetStateAction<Page>>;
   current?: Page;
+  children?: React.ReactNode; // <-- allow children
 }
 
 const items: { Icon: IconType; label: Page }[] = [
@@ -14,7 +15,7 @@ const items: { Icon: IconType; label: Page }[] = [
   { Icon: FiBox, label: 'produtos' },
 ];
 
-export default function Navbar({ onNavigate, current }: NavbarProps) {
+export default function Navbar({ onNavigate, current, children }: NavbarProps) {
   return (
     <nav>
       {items.map(({ Icon, label }) => (
@@ -27,6 +28,7 @@ export default function Navbar({ onNavigate, current }: NavbarProps) {
           <span>{label}</span>
         </div>
       ))}
+      {children}
     </nav>
   );
 }
