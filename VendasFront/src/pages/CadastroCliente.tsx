@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
-import { supabase, type Customer } from '../lib/supabase';
+import { supabase, type CustomerMap } from '../lib/supabase';
 
 export default function Customers() {
-  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [customers, setCustomers] = useState<CustomerMap[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -54,14 +54,14 @@ export default function Customers() {
     }
   };
 
-  const handleEdit = (customer: Customer) => {
+  const handleEdit = (customermap: CustomerMap) => {
     setFormData({
-      name: customer.name,
-      email: customer.email || '',
-      phone: customer.phone || '',
-      address: customer.address || '',
+      name: customermap.name,
+      email: customermap.email || '',
+      phone: customermap.phone || '',
+      address: customermap.address || '',
     });
-    setEditingId(customer.id);
+    setEditingId(customermap.id);
     setShowForm(true);
   };
 

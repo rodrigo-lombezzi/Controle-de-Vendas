@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ShoppingCart, Plus, Minus, Trash2} from 'lucide-react';
-import { supabase, Product, Customer, CartItem } from './lib/supabase';
+import supabase, { type Product, type CustomerMap, type CartItem } from '../lib/supabase';
 
 export default function Sales() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [customers, setCustomers] = useState<CustomerMap[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [selectedCustomer, setSelectedCustomer] = useState<string>('');
   const [loading, setLoading] = useState(true);

@@ -30,7 +30,7 @@ export default function Home() {
         supabase.from('sales').select('total'),
       ]);
 
-      const totalRevenue = salesRes.data?.reduce((sum, sale) => sum + Number(sale.total), 0) || 0;
+      const totalRevenue = salesRes.data?.reduce((sum: number, sale: { total: any; }) => sum + Number(sale.total), 0) || 0;
 
       setStats({
         customers: customersRes.count || 0,

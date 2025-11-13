@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LogIn, UserPlus } from 'lucide-react';
-import { useAuth } from '../lib/auth2';
+import { useAuth } from '../lib/auth';
 
 export default function Login() {
   const { signIn, signUp } = useAuth();
