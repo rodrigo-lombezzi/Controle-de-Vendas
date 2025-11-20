@@ -1,7 +1,7 @@
 export const routes = {
     Landing: '/',
     Login: '/login',
-    Dashboard: '/dashboard',
-    Profile: '/profile',
+    CadastroProduto: '/produtos/cadastro',
+    CadastroCliente: '/clientes/cadastro'
 
 };

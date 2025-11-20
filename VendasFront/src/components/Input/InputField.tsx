@@ -1,34 +1,3 @@
-import React from 'react';
-
-type Props = {
-  value?: string;
-  onChange?: (v: string) => void;
-  placeholder?: string;
-  type?: string;
-  name?: string;
-  className?: string;
-};
-
-export default function InputField({
-  value = '',
-  onChange,
-  placeholder,
-  type = 'text',
-  name,
-  className,
-}: Props) {
-  return (
-    <input
-      name={name}
-      className={className}
-      type={type}
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange?.(e.target.value)}
-    />
-  );
-}
-// src/components/shared/InputField.tsx
 import React, { useState } from 'react';
 import eyeIcon from '../../assets/images/eye.svg';
 import closeEyeIcon from '../../assets/images/closeEye.svg';

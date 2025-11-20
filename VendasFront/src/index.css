@@ -1,126 +1,143 @@
-@import url("assets/font/Lato.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities; 
-  
-  @layer base {
-    html {
-      --font-size: 10px;
-      font-size: var(--font-size);
-      font-family: 'Lato', sans-serif;
-    } 
+@import "./assets/font/Lato.css";
 
-    input::-ms-clear, input::-ms-reveal {
-      display: none;
+@layer base {
+  html {
+    --font-size: 10px;
+    font-size: var(--font-size);
+    font-family: 'Lato', sans-serif;
+  }
+
+  input::-ms-clear,
+  input::-ms-reveal {
+    display: none;
+  }
+
+  input::-ms-clear,
+  input::-ms-reveal {
+    display: none;
+  }
+
+  :root {
+    --color-primary: #87CEDB;
+    --color-secondary: #1E91D6;
+    --color-text-primary: #61677A;
+    --color-text-secondary: #7B8298;
+    --color-footer: #E3F1F9;
+    --color-white: white;
+
+    --color-hoverButton: #E3F1F9;
+    --color-hoverButton2: #7B8298;
+    --color-surface: #FFFFFF;
+    --color-background: #FCFCFC;
+    --color-danger: #FF4D4F;
+    --color-success: #52C41A;
+    --color-warning: #FAAD14;
+
+  }
+
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
     }
 
-    input::-ms-clear,
-    input::-ms-reveal {
-      display: none;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    :root {
-      --color-primary: #87CEDB;
-      --color-secondary: #1E91D6;
-      --color-text-primary: #61677A;
-      --color-text-secondary: #7B8298;
-      --color-footer:#E3F1F9;
-      --color-white:white;
-
-      --color-hoverButton: #E3F1F9;
-      --color-hoverButton2: #7B8298;
-      --color-surface: #FFFFFF;
-      --color-background: #FCFCFC;
-      --color-danger: #FF4D4F;
-      --color-success: #52C41A;
-      --color-warning: #FAAD14;
-
-    }
-
   }
 
-  /* Filtros de Acessibilidade */
-  .accessibility-grayscale {
-    filter: grayscale(100%);
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
   }
+}
 
-  .accessibility-protanopia {
-    filter: url('#protanopia-filter');
-  }
+/* Filtros de Acessibilidade */
+.accessibility-grayscale {
+  filter: grayscale(100%);
+}
 
-  .accessibility-deuteranopia {
-    filter: url('#deuteranopia-filter');
-  }
+.accessibility-protanopia {
+  filter: url('#protanopia-filter');
+}
 
-  .accessibility-tritanopia {
-    filter: url('#tritanopia-filter');
-  }
+.accessibility-deuteranopia {
+  filter: url('#deuteranopia-filter');
+}
 
-  .accessibility-high-contrast {
-    filter: contrast(150%) brightness(1.2);
-  }
+.accessibility-tritanopia {
+  filter: url('#tritanopia-filter');
+}
 
-  /* Tamanhos de Fonte */
-  .font-size-small {
-    --font-size: 12px;
-  }
+.accessibility-high-contrast {
+  filter: contrast(150%) brightness(1.2);
+}
 
-  .font-size-normal {
-    --font-size: 14px;
-  }
+/* Tamanhos de Fonte */
+.font-size-small {
+  --font-size: 12px;
+}
 
-  .font-size-large {
-    --font-size: 16px;
-  }
+.font-size-normal {
+  --font-size: 14px;
+}
 
-  .font-size-extra-large {
-    --font-size: 18px;
-  }
+.font-size-large {
+  --font-size: 16px;
+}
 
-  /* Aplicar tamanhos de fonte de forma escalável */
-  .font-size-small * {
-    font-size: calc(var(--font-size) * 0.85) !important;
-  }
+.font-size-extra-large {
+  --font-size: 18px;
+}
 
-  .font-size-large * {
-    font-size: calc(var(--font-size) * 1.15) !important;
-  }
+/* Aplicar tamanhos de fonte de forma escalável */
+.font-size-small * {
+  font-size: calc(var(--font-size) * 0.85) !important;
+}
 
-  .font-size-extra-large * {
-    font-size: calc(var(--font-size) * 1.3) !important;
-  }
+.font-size-large * {
+  font-size: calc(var(--font-size) * 1.15) !important;
+}
 
-  /* Garantir que elementos de interface não quebrem */
-  .font-size-large input,
-  .font-size-large button,
-  .font-size-large select,
-  .font-size-large textarea,
-  .font-size-extra-large input,
-  .font-size-extra-large button,
-  .font-size-extra-large select,
-  .font-size-extra-large textarea {
-    padding: 0.5rem 0.75rem !important;
-    min-height: 2.5rem !important;
-  }
+.font-size-extra-large * {
+  font-size: calc(var(--font-size) * 1.3) !important;
+}
 
-  /* Ajustar espaçamentos para fontes maiores */
-  .font-size-large .space-y-4 > * + *,
-  .font-size-extra-large .space-y-4 > * + * {
-    margin-top: 1.25rem !important;
-  }
+/* Garantir que elementos de interface não quebrem */
+.font-size-large input,
+.font-size-large button,
+.font-size-large select,
+.font-size-large textarea,
+.font-size-extra-large input,
+.font-size-extra-large button,
+.font-size-extra-large select,
+.font-size-extra-large textarea {
+  padding: 0.5rem 0.75rem !important;
+  min-height: 2.5rem !important;
+}
 
-  .font-size-large .space-y-6 > * + *,
-  .font-size-extra-large .space-y-6 > * + * {
-    margin-top: 1.75rem !important;
-  }
+/* Ajustar espaçamentos para fontes maiores */
+.font-size-large .space-y-4>*+*,
+.font-size-extra-large .space-y-4>*+* {
+  margin-top: 1.25rem !important;
+}
 
-  /* Filtros SVG para Daltonismo */
-  .accessibility-filters {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-  }
-    
-    
+.font-size-large .space-y-6>*+*,
+.font-size-extra-large .space-y-6>*+* {
+  margin-top: 1.75rem !important;
+}
+
+/* Filtros SVG para Daltonismo */
+.accessibility-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ApiService from '../../../services/apiService';
-import InputField from '../../../components/Input/InputField';
-import Card from '../../../components/Card';
-import Button from '../../../components/Button';
-import BackButton from '../../../components/BackButton';
+import ApiService from '../../services/apiService';
+import InputField from '../../components/Input/InputField';
+import Card from '../../components/Card';
+import Button from '../../components/Button';
+import BackButton from '../../components/BackButton';
 import { User, Mail, Lock } from 'lucide-react';
 import { isAxiosError } from 'axios';
 

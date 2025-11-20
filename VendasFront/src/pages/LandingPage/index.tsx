@@ -1,87 +1,97 @@
-import Landing from "../../assets/images/landing.png";
+import { Link } from "react-router-dom";
+import Button from "../../components/Button";
+import Card from "../../components/Card";
+import PageLayout from "../../components/PageLayout";
 
-export default function LandingPage() {
+// Header Moderno
+const Header = () => (
+  <header className="bg-white shadow-sm p-4 flex justify-between items-center">
+    <h1 className="text-2xl font-bold text-indigo-600">SalesControl</h1>
+    <nav className="space-x-6">
+      <Link to="/login" className="text-gray-700 hover:text-indigo-600 transition">Login</Link>
+      <Link to="/register" className="text-gray-700 hover:text-indigo-600 transition">Register</Link>
+    </nav>
+  </header>
+);
+
+// Feature Card
+const Feature = ({ title, description }: { title: string; description: string }) => (
+  <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+    <h3 className="text-xl font-semibold text-indigo-600 mb-2">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
+
+// Footer
+const Footer = () => (
+  <footer className="bg-gray-900 text-white py-6 mt-16 text-center">
+    <p className="text-sm">© 2024 SalesControl. Todos os direitos reservados.</p>
+  </footer>
+);
+
+// Landing Page
+const LandingPage = () => {
   return (
-    <main className="bg-background min-h-[calc(100vh-120px)] flex items-center">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Seção de Texto */}
-        <div className="space-y-8">
-          <div className="space-y-6">
-            <div className="inline-flex items-center px-4 py-2 bg-secondary/10 rounded-full">
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold text-textPrimary leading-tight">
-              Sistema completo para{" "}
-              <span className="text-secondary">sua empresa</span>!
-            </h1>
-            
-            <p className="text-lg text-textSecondary leading-relaxed max-w-xl">
-              Transforme a gestão da sua empresa com nossa plataforma inovadora. 
-              Controle financeiro, gestão de equipes e relatórios inteligentes em um só lugar.
+    <PageLayout title="Bem-vindo ao SalesControl">
+
+      <Header />
+
+      {/* HERO */}
+      <main className="bg-gradient-to-b from-indigo-50 to-white">
+
+        <section className="text-center px-6 py-20 max-w-4xl mx-auto">
+          <h2 className="text-5xl font-extrabold text-gray-800 mb-6">
+            A forma inteligente de gerenciar seu negócio
+          </h2>
+
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            Uma plataforma completa para organizar vendas, clientes e produtos —
+            com simplicidade e eficiência.
+          </p>
+
+          <Button className="text-lg px-8 py-3 shadow-lg hover:shadow-xl">
+            Comece Agora
+          </Button>
+        </section>
+
+        {/* FEATURES */}
+        <section className="px-6 py-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <Feature
+              title="Gestão de Vendas"
+              description="Acompanhe suas vendas com dashboards intuitivos e relatórios completos."
+            />
+            <Feature
+              title="Cadastro de Clientes"
+              description="Tenha o controle dos seus clientes de forma organizada e acessível."
+            />
+            <Feature
+              title="Controle de Produtos"
+              description="Gerencie o estoque, preços e catálogo de produtos com facilidade."
+            />
+          </div>
+        </section>
+
+        {/* DEPOIMENTO */}
+        <section className="px-6 py-20 max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8">
+            O que nossos clientes dizem
+          </h2>
+
+          <Card className="p-8 shadow-md bg-white">
+            <p className="text-gray-600 italic mb-4">
+              "O SalesControl transformou a maneira como gerenciamos nosso negócio.
+              É intuitivo, rápido e extremamente eficiente!"
             </p>
-          </div>
+            <p className="font-semibold text-gray-800">- João Silva, CEO da TechNova</p>
+          </Card>
+        </section>
 
-          {/* Features Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-lg border border-gray-100">
-              <div className="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center">
-                <span className="text-secondary text-sm">📊</span>
-              </div>
-              <span className="text-sm font-medium text-textPrimary">Relatórios Avançados</span>
-            </div>
-            
-            <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-lg border border-gray-100">
-              <div className="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center">
-                <span className="text-secondary text-sm">🔒</span>
-              </div>
-              <span className="text-sm font-medium text-textPrimary">Segurança Total</span>
-            </div>
-            
-            <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-lg border border-gray-100">
-              <div className="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center">
-                <span className="text-secondary text-sm">⚡</span>
-              </div>
-              <span className="text-sm font-medium text-textPrimary">Setup Rápido</span>
-            </div>
-          </div>
+      </main>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              className="bg-secondary text-background text-base font-semibold px-8 py-4 rounded-xl hover:bg-hoverButton2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              onClick={() => window.location.href = "/cadastroempresa"}
-            >
-              Começar Gratuitamente
-            </button>
-            
-            <a
-              href="/dashboard"
-              className="inline-flex items-center justify-center bg-white text-textPrimary text-base font-semibold px-8 py-4 rounded-xl border-2 border-gray-200 hover:border-secondary hover:text-secondary transition-all duration-300"
-            >
-              Ver Dashboard
-              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* Seção da Imagem */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="relative">
-            
-            {/* Container da imagem */}
-            <div className="relative p-4 rounded-2xl">
-              <img
-                src={Landing}
-                alt="Dashboard da plataforma LumenSys mostrando interface moderna e intuitiva"
-                className="w-full h-auto max-w-lg rounded-xl"
-              />
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+      <Footer />
+    </PageLayout>
   );
-}
+};
+
+export default LandingPage;

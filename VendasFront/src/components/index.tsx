@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ApiService from '../../../services/apiService';
-import InputField from '../../../components/Input/InputField';
-import Card from '../../../components/Card';
-import Button from '../../../components/Button';
-import BackButton from '../../../components/BackButton';
 import { User, Mail, Lock } from 'lucide-react';
 import { isAxiosError } from 'axios';
+import ApiService from '../services/apiService';
+import BackButton from './BackButton';
+import { Card } from './DashBoard/Cards';
+import InputField from './Input/InputField';
+import Button from './Button';
 
 export default function UserRegistration() {
   const [name, setName] = useState('');
