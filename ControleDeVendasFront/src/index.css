@@ -1,72 +1,75 @@
+@import url("assets/font/Lato.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-size: 10px;
+  font-size: var(--font-size);
+  font-family: 'Lato', sans-serif;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Fundo e superfícies */
+  --color-background: #FCFCFC;
+  --color-surface: #FFFFFF;
+  --color-surfaceUser: #F9FAFB;
+  --color-footer: #E3F1F9;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* Texto */
+  --color-textPrimary: #1F2937;   /* cinza escuro */
+  --color-textSecondary: #6B7280; /* cinza médio */
+  --color-whiteColor: #FFFFFF;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  /* Paleta principal */
+  --color-primary: #2563EB;   /* azul */
+  --color-secondary: #6366F1; /* roxo */
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+  /* Estados e feedback */
+  --color-danger: #DC2626;
+  --color-hoverDanger: #B91C1C;
+  --color-success: #16A34A;
+  --color-hoverSuccess: #15803D;
+  --color-warning: #FACC15;
+  --color-edit: #F59E0B;
+  --color-hoverEdit: #D97706;
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+  /* Neutros */
+  --color-neutralLighter: #F3F4F6;
+  --color-neutral: #D1D5DB;
+  --color-neutralDarker: #9CA3AF;
+  --color-neutralDark: #374151;
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  /* Botões */
+  --color-hoverButton: #E3F1F9;
+  --color-hoverButton2: #4F46E5;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Tema escuro */
+.dark {
+  --color-background: #1F2937;
+  --color-surface: #111827;
+  --color-surfaceUser: #1F2937;
+  --color-footer: #0F172A;
+
+  --color-textPrimary: #F9FAFB;
+  --color-textSecondary: #D1D5DB;
+
+  --color-primary: #3B82F6;
+  --color-secondary: #8B5CF6;
+
+  --color-danger: #F87171;
+  --color-hoverDanger: #EF4444;
+  --color-success: #4ADE80;
+  --color-hoverSuccess: #22C55E;
+  --color-warning: #FCD34D;
+  --color-edit: #FBBF24;
+  --color-hoverEdit: #F59E0B;
+
+  --color-neutralLighter: #374151;
+  --color-neutral: #4B5563;
+  --color-neutralDarker: #6B7280;
+  --color-neutralDark: #9CA3AF;
+
+  --color-hoverButton: #1E3A8A;
+  --color-hoverButton2: #4338CA;
 }
