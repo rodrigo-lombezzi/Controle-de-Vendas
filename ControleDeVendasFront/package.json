@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "check:exports": "node ./scripts/check-exports.js",
-      "convert:ts": "node ./scripts/convert-to-ts.js",
+    "convert:ts": "node ./scripts/convert-to-ts.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@tailwindcss/postcss": "^4.1.17",
     "@types/axios": "^0.9.36",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^24.10.1",
@@ -45,7 +44,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.17",
+    "tailwindcss": "^3.4.15",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "npm:rolldown-vite@7.2.5"
