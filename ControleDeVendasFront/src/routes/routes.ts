@@ -1,10 +1,11 @@
 export const routes = 
     {
-            LANDING:'/',
-            LOGIN:'/login',
-            USERSIGNUP:'/usersignup',
-            DASHBOARD:'/dashboard',
-            SALESPAGE:'/salespage',
-            PRODUCTSPAGE:'/productspage',
-            CUSTOMERSPAGE:'/customerspage'
+          LandingPage: "/",
+          Profile: "/profile",
+          Dashboard: "/dashboard",
+          Produtos: "/produtos",
+          Clientes: "/clientes",
+          Vendas: "/vendas",
+          Servicos: "/servicos",
+
     }

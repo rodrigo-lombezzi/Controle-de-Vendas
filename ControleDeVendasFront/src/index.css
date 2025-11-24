@@ -1,75 +1,42 @@
 @import url("assets/font/Lato.css");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities; 
+  
+  @layer base {
+    html {
+      --font-size: 10px;
+      font-size: var(--font-size);
+      font-family: 'Lato', sans-serif;
+    } 
 
-:root {
-  --font-size: 10px;
-  font-size: var(--font-size);
-  font-family: 'Lato', sans-serif;
+    input::-ms-clear, input::-ms-reveal {
+      display: none;
+    }
 
-  /* Fundo e superfícies */
-  --color-background: #FCFCFC;
-  --color-surface: #FFFFFF;
-  --color-surfaceUser: #F9FAFB;
-  --color-footer: #E3F1F9;
+    input::-ms-clear,
+    input::-ms-reveal {
+      display: none;
+    }
 
-  /* Texto */
-  --color-textPrimary: #1F2937;   /* cinza escuro */
-  --color-textSecondary: #6B7280; /* cinza médio */
-  --color-whiteColor: #FFFFFF;
+    :root {
+      --color-primary: #87CEDB;
+      --color-secondary: #1E91D6;
+      --color-text-primary: #61677A;
+      --color-text-secondary: #7B8298;
+      --color-footer:#E3F1F9;
+      --color-white:white;
 
-  /* Paleta principal */
-  --color-primary: #2563EB;   /* azul */
-  --color-secondary: #6366F1; /* roxo */
+      --color-hoverButton: #E3F1F9;
+      --color-hoverButton2: #7B8298;
+      --color-surface: #FFFFFF;
+      --color-background: #FCFCFC;
+      --color-danger: #FF4D4F;
+      --color-success: #52C41A;
+      --color-warning: #FAAD14;
 
-  /* Estados e feedback */
-  --color-danger: #DC2626;
-  --color-hoverDanger: #B91C1C;
-  --color-success: #16A34A;
-  --color-hoverSuccess: #15803D;
-  --color-warning: #FACC15;
-  --color-edit: #F59E0B;
-  --color-hoverEdit: #D97706;
+    }
 
-  /* Neutros */
-  --color-neutralLighter: #F3F4F6;
-  --color-neutral: #D1D5DB;
-  --color-neutralDarker: #9CA3AF;
-  --color-neutralDark: #374151;
+  }
 
-  /* Botões */
-  --color-hoverButton: #E3F1F9;
-  --color-hoverButton2: #4F46E5;
-}
-
-/* Tema escuro */
-.dark {
-  --color-background: #1F2937;
-  --color-surface: #111827;
-  --color-surfaceUser: #1F2937;
-  --color-footer: #0F172A;
-
-  --color-textPrimary: #F9FAFB;
-  --color-textSecondary: #D1D5DB;
-
-  --color-primary: #3B82F6;
-  --color-secondary: #8B5CF6;
-
-  --color-danger: #F87171;
-  --color-hoverDanger: #EF4444;
-  --color-success: #4ADE80;
-  --color-hoverSuccess: #22C55E;
-  --color-warning: #FCD34D;
-  --color-edit: #FBBF24;
-  --color-hoverEdit: #F59E0B;
-
-  --color-neutralLighter: #374151;
-  --color-neutral: #4B5563;
-  --color-neutralDarker: #6B7280;
-  --color-neutralDark: #9CA3AF;
-
-  --color-hoverButton: #1E3A8A;
-  --color-hoverButton2: #4338CA;
-}
