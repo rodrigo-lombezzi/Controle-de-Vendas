@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "check:exports": "node ./scripts/check-exports.js",
+      "convert:ts": "node ./scripts/convert-to-ts.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

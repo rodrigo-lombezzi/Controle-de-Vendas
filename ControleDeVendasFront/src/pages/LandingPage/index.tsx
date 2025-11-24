@@ -1,7 +1,5 @@
-import React from 'react';
-import LandingImg from '../../assets/landing-image.png';
-import { Button } from '../../components/Button';
-import { Card } from '../../components/Card';
+import Button from '../../components/Button';
+import Card from '../../components/Card';
 
 export default function LandingPage() {
   return (
@@ -67,7 +65,7 @@ export default function LandingPage() {
         {/* Imagem */}
         <aside className="flex justify-center lg:justify-end">
           <div className="relative p-4 rounded-3xl bg-gradient-to-br from-white/3 to-white/1 shadow-lg">
-            <img src={LandingImg} alt="Tela do sistema" className="w-full h-auto max-w-lg rounded-xl" />
+            {/* landing image removed (missing asset) */}
           </div>
         </aside>
       </div>
